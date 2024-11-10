@@ -1,0 +1,16 @@
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+CREATE TABLE IF NOT EXISTS game (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  price NUMERIC(10, 2) NOT NULL,
+  release_date DATE NOT NULL,
+  platform VARCHAR(100) NOT NULL,
+  category VARCHAR(100) NOT NULL,
+  rate INTEGER NOT NULL CHECK (rate BETWEEN 0 AND 5),
+  image VARCHAR(255) NOT NULL,
+  released BOOLEAN DEFAULT false NOT NULL,
+  game_producer VARCHAR(100) NOT NULL,
+  media_type VARCHAR(100) NOT NULL
+);
